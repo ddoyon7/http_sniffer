@@ -43,14 +43,17 @@ void got_packet(u_char* args, const struct pcap_pkthdr* header,
       printf("dst port : %d\n", dst_port);
 
       // HTTP : message
-      const u_char* payload =
-          packet + sizeof(struct ethheader) + ip_header_len + tcp_header_len;
-      int payload_len = ip_packet_len - ip_header_len - tcp_header_len;
+      if (src_port == 80 || dst_port == 80) {
+        const u_char* payload =
+            packet + sizeof(struct ethheader) + ip_header_len + tcp_header_len;
+        int payload_len = ip_packet_len - ip_header_len - tcp_header_len;
 
-      printf("=======HTTP=======\n");
-      printf("message : \n");
-      if (payload_len > 0 && (src_port == 80 || dst_port == 80)) {
-        printf("%.*s\n", payload_len, payload);
+        printf("=======HTTP=======\n");
+        printf("message : \n");
+        if (payload_len > 0)
+          printf("%.*s\n", payload_len, payload);
+        else
+          printf("no data\n");
       }
     }
   }
