@@ -19,7 +19,6 @@ The sniffer captures TCP packets from a network interface and prints the followi
 
 This repository also includes a simple HTTP sender program for generating HTTP traffic during testing.
 
----
 
 ## 2. Directory Structure
 
@@ -41,7 +40,6 @@ http_sniffer/
 | `src/send_http.c` | Sends a simple HTTP request to a target server |
 | `Makefile` | Builds the sniffer and sender programs |
 
----
 
 ## 3. Test Environment
 
@@ -72,7 +70,6 @@ Promiscuous Mode: Allow All
 
 For the Sniffer VM, promiscuous mode should be enabled so that it can capture packets transmitted between the Client VM and the Server VM.
 
----
 
 ## 4. Requirements
 
@@ -89,7 +86,6 @@ The Server VM needs Python 3 to run a simple HTTP server.
 sudo apt install python3
 ```
 
----
 
 ## 5. Build
 
@@ -119,7 +115,6 @@ To remove compiled files:
 make clean
 ```
 
----
 
 ## 6. How to Run the Experiment
 
@@ -193,8 +188,6 @@ The sender program sends an HTTP request containing the message:
 Hello World!
 ```
 
----
-
 ## 7. Expected Output
 
 When an HTTP packet is captured successfully, the Sniffer VM prints output similar to the following:
@@ -231,7 +224,7 @@ no data
 
 This is normal. TCP connection setup packets such as SYN, SYN-ACK, and ACK do not contain HTTP payload data.
 
----
+
 
 ## 8. Notes
 
